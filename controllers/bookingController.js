@@ -58,3 +58,70 @@ export const getBookings = async (req, res, next) => {
   }
 };
 
+
+// @desc    Update booking status
+// @route   PATCH /api/bookings/:id
+// @access  Private/Admin
+export const updateBookingStatus = async (req, res, next) => {
+  try {
+    const { status } = req.body;
+    const { id } = req.params;
+
+    if (!['pending', 'confirmed', 'cancelled'].includes(status)) {
+      return res.status(400).json({
+        success: false,
+        error: 'Invalid status. Must be pending, confirmed, or cancelled'
+      });
+    }
+
+    const booking = await Booking.findByIdAndUpdate(
+      id,
+      { status },
+      { new: true, runValidators: true }
+    );
+
+    if (!booking) {
+      return res.status(404).json({
+        success: false,
+        error: 'Booking not found'
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: booking,
+      message: 'Booking status updated successfully'
+    });
+
+  } catch (error) {
+    next(error);
+  }
+};
+
+// @desc    Delete a booking
+// @route   DELETE /api/bookings/:id
+// @access  Private/Admin
+export const deleteBooking = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const booking = await Booking.findByIdAndDelete(id);
+
+    if (!booking) {
+      return res.status(404).json({
+        success: false,
+        error: 'Booking not found'
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: {},
+      message: 'Booking deleted successfully'
+    });
+
+  } catch (error) {
+    next(error);
+  }
+};
+
