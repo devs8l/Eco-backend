@@ -12,9 +12,10 @@ connectCloudinary();
 const app = express();
 
 app.use(cors({
-  origin: '*',
+  origin: '*', // Allow any origin
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: false // Must be false when using wildcard origin
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
