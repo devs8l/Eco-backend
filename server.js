@@ -4,6 +4,7 @@ import 'dotenv/config';
 import connectDB from './config/db.js';
 import bookingRoutes from './routes/bookingRoutes.js';
 import reelRoutes from './routes/reelRoutes.js';
+import authRoutes from './routes/auth.js';
 import connectCloudinary from './config/cloudinary.js';
 
 connectDB();
@@ -23,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/reels', reelRoutes);
+app.use('/api/auth', authRoutes);
 
 app.get('/', (req, res) => {
   res.send('Eco Holiday API is running');
