@@ -6,6 +6,7 @@ import bookingRoutes from './routes/bookingRoutes.js';
 import reelRoutes from './routes/reelRoutes.js';
 import authRoutes from './routes/auth.js';
 import connectCloudinary from './config/cloudinary.js';
+import signRoutes from './routes/signature.js';
 
 connectDB();
 connectCloudinary();
@@ -25,6 +26,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/reels', reelRoutes);
 app.use('/api/auth', authRoutes);
+
+//signature route for Cloudinary uploads
+app.use('/api', signRoutes)
 
 app.get('/', (req, res) => {
   res.send('Eco Holiday API is running');

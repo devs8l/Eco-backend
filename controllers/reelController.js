@@ -13,29 +13,24 @@ export const getReels = async (req, res) => {
 
 export const uploadReel = async (req, res) => {
   try {
-    const { title, description } = req.body;
-    
-    if (!req.file) {
-      return res.status(400).json({ message: 'No video file uploaded' });
+    const { title, description, videoUrl, publicId } = req.body;
+
+    if (!videoUrl || !publicId) {
+      return res.status(400).json({ message: 'Missing video data' });
     }
 
-    const uploadResult = await uploadToCloudinary(req.file.buffer);
-    
     const newReel = new Reel({
       title,
       description,
-      videoUrl: uploadResult.secure_url,
-      publicId: uploadResult.public_id,
+      videoUrl,
+      publicId
     });
 
     await newReel.save();
     res.status(201).json(newReel);
   } catch (error) {
-    console.error('Error uploading reel:', error);
-    res.status(500).json({ 
-      message: error.message || 'Server Error',
-      error: process.env.NODE_ENV === 'development' ? error.stack : undefined
-    });
+    console.error('Error saving reel:', error);
+    res.status(500).json({ message: 'Server Error' });
   }
 };
 
