@@ -7,6 +7,7 @@ import reelRoutes from './routes/reelRoutes.js';
 import authRoutes from './routes/auth.js';
 import connectCloudinary from './config/cloudinary.js';
 import signRoutes from './routes/signature.js';
+import packageRoutes from './routes/packageRoute.js';
 
 connectDB();
 connectCloudinary();
@@ -26,6 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/reels', reelRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/pricing', packageRoutes);
 
 //signature route for Cloudinary uploads
 app.use('/api', signRoutes)
