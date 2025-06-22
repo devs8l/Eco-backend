@@ -9,6 +9,7 @@ import connectCloudinary from './config/cloudinary.js';
 import signRoutes from './routes/signature.js';
 import packageRoutes from './routes/packageRoute.js';
 import roomRoutes from './routes/roomImages.js';
+import galleryRoutes from './routes/gallery.js';
 
 connectDB();
 connectCloudinary();
@@ -35,6 +36,9 @@ app.use('/api', signRoutes)
 
 // Route for room images
 app.use('/api/room-images',roomRoutes);
+
+// Gallery route
+app.use('/api/gallery',galleryRoutes);
 
 app.get('/', (req, res) => {
   res.send('Eco Holiday API is running');
