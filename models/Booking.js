@@ -5,7 +5,7 @@ const bookingSchema = new mongoose.Schema({
   packageName: {
     type: String,
     required: true,
-    enum: ['Day Out Booking', 'Room Booking','Cottage Booking','Villa Booking','Pool Room Booking'] // Add other package types as needed
+    enum: ['Day Out Booking', 'Room Booking','Cottage Booking','Villa Booking','Pool Room Booking','Camping Night'] // Add other package types as needed
   },
   name: {
     type: String,
