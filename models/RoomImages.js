@@ -25,6 +25,26 @@ const roomImagesSchema = new mongoose.Schema({
     url: String,
     publicId: String,
     isFeatured: Boolean
+  }],
+  villaFacility: [{
+    url: String,
+    publicId: String,
+    isFeatured: Boolean
+  }],
+  dining: [{
+    url: String,
+    publicId: String,
+    isFeatured: Boolean
+  }],
+  swimming: [{
+    url: String,
+    publicId: String,
+    isFeatured: Boolean
+  }],
+  photoshoot: [{
+    url: String,
+    publicId: String,
+    isFeatured: Boolean
   }]
 
 }, { timestamps: true });
