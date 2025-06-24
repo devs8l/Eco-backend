@@ -26,10 +26,10 @@ export const createBooking = async (req, res, next) => {
       phone,
       adults,
       kids: kids || 0,
-      rooms: packageName === 'Room Booking' ? rooms : undefined,
-      extraBeds: packageName === 'Room Booking' ? (extraBeds || 0) : undefined,
+      rooms,
+      extraBeds,
       checkInDate,
-      checkOutDate: packageName === 'Room Booking' ? checkOutDate : undefined,
+      checkOutDate,
       status: 'pending'
     });
 
