@@ -28,7 +28,7 @@ router.put('/:type', checkAuth, async (req, res) => {
     const { type } = req.params;
     const { images } = req.body;
     
-    if (!['cottage', 'villa', 'poolRoom'].includes(type)) {
+    if (!['cottage', 'villa', 'poolRoom','woodenHut'].includes(type)) {
       return res.status(400).json({ message: 'Invalid room type' });
     }
 

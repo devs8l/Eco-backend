@@ -15,6 +15,11 @@ const roomImagesSchema = new mongoose.Schema({
     url: String,
     publicId: String,
     isFeatured: Boolean
+  }],
+  woodenHut: [{
+    url: String,
+    publicId: String,
+    isFeatured: Boolean
   }]
 }, { timestamps: true });
 
