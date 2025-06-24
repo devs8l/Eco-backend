@@ -20,7 +20,13 @@ const roomImagesSchema = new mongoose.Schema({
     url: String,
     publicId: String,
     isFeatured: Boolean
+  }],
+  camping: [{
+    url: String,
+    publicId: String,
+    isFeatured: Boolean
   }]
+
 }, { timestamps: true });
 
 const RoomImages = mongoose.model('RoomImages', roomImagesSchema);
