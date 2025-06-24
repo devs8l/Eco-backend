@@ -40,9 +40,12 @@ app.use('/api/room-images',roomRoutes);
 // Gallery route
 app.use('/api/gallery',galleryRoutes);
 
+
 app.get('/', (req, res) => {
   res.send('Eco Holiday API is running');
 });
+
+
 
 const PORT = process.env.PORT || 3000;
 

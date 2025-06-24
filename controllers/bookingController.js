@@ -1,4 +1,5 @@
 import Booking from '../models/Booking.js';
+import { sendMail } from '../controllers/sendMail.js';
 
 
 // @desc    Create new booking
@@ -32,8 +33,20 @@ export const createBooking = async (req, res, next) => {
       status: 'pending'
     });
 
+
+
     // Future: Send confirmation email
     // await sendBookingConfirmation(booking);
+    await sendMail(
+      email,
+      'Welcome to the Eco Family 🌼',
+      `<p>Hi <strong>${name}</strong>,</p>
+   <p>Thank you for visiting <strong>Eco Holiday</strong>! 🌿<br/>
+   We’ve received your booking request and will get back to you shortly with availability details.</p>
+   <p>We’re excited to welcome you to our peaceful getaway and create warm family memories together.</p>
+   <p>With love,<br/><strong>The Eco Holiday Family 💚</strong></p>`
+    );
+
 
     res.status(201).json({
       success: true,
