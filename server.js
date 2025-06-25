@@ -11,6 +11,7 @@ import packageRoutes from './routes/packageRoute.js';
 import roomRoutes from './routes/roomImages.js';
 import galleryRoutes from './routes/gallery.js';
 import feedbackRoutes from './routes/feedback.js';
+import bentoRoutes from './routes/bentoRoute.js';
 
 connectDB();
 connectCloudinary();
@@ -44,10 +45,12 @@ app.use('/api/gallery',galleryRoutes);
 //feedback
 app.use('/api/feedback', feedbackRoutes);
 
+//bento
+app.use('/api/bento', bentoRoutes);
+
 app.get('/', (req, res) => {
   res.send('Eco Holiday API is running');
 });
-
 
 
 const PORT = process.env.PORT || 3000;
